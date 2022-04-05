@@ -6,7 +6,7 @@ import { SocialIcon } from "react-social-icons";
 const icons = [
   {
     fgColor: "white",
-    url: "https://github.com/jaketrent",
+    url: "https://github.com/jvalverde96",
     style: { width: "25px", height: "25px" },
   },
   {

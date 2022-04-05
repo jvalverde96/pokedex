@@ -91,6 +91,10 @@ const PokemonData = ({
         label: "Weight:",
         value: `${(clickedPokemonData?.weight / 10).toFixed(1)} kg`,
       },
+      {
+        label: "Capture Rate:",
+        value: `${clickedPokemonData?.pokemonCaptureRate}%`
+      },
     ],
     [clickedPokemonId]
   );
@@ -226,7 +230,7 @@ const PokemonData = ({
                 color="black"
                 bg="white"
                 width={["100px", "100px", "200px", "400px"]}
-                height={["80px", "80px", "80px", "80px"]}
+                height="80px"
                 fontSize={["xs", "md", "md", "md"]}
               >
                 <Tbody>
