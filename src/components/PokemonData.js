@@ -91,6 +91,10 @@ const PokemonData = ({
         label: "Weight:",
         value: `${(clickedPokemonData?.weight / 10).toFixed(1)} kg`,
       },
+      {
+        label: "Capture Rate:",
+        value: `${clickedPokemonData?.pokemonCaptureRate}%`
+      },
     ],
     [clickedPokemonId]
   );
