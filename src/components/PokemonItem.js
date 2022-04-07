@@ -20,6 +20,7 @@ const PokemonItem = ({ pokemon, onClick }) => {
       m="auto"
       onClick={onClick}
       _hover={{transform: 'matrix(1, 0, 0, 1, 0, -5)'}}
+      boxShadow="dark-lg"
     >
       <Box
         display="flex"

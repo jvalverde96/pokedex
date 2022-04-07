@@ -19,6 +19,7 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import axiosClient from "../api/axios-config";
 import { PokedexContext } from "./Pokedex";
 import debounce from "lodash.debounce";
+import "../index.css";
 
 const imageTypes = [
   { name: "Official Artwork", value: "official-artwork" },
@@ -161,12 +162,13 @@ const Filters = () => {
       <Accordion allowToggle w={["300px", "350px", "580px", "580px"]}>
         <AccordionItem border="none">
           <AccordionButton
-            bg="blue.500"
+            className="red-gradient"
             onClick={() =>
               setActionLabel(actionLabel === "Open" ? "Close" : "Open")
             }
-            _expanded={{ bg: "blue.500" }}
-            _hover={{ bg: "blue.500" }}
+            _hover={{
+              bg: "radial-gradient(ellipse at 50% 50%, #D5554D 0%, #640202 100%)",
+            }}
           >
             <Box flex="1" textAlign="left" color="white">
               {actionLabel} Filters
@@ -174,7 +176,7 @@ const Filters = () => {
             <Box
               flex="1"
               textAlign="right"
-              opacity="0.2"
+              opacity="0.5"
               color="white"
               fontSize="sm"
               mr="10px"
@@ -183,7 +185,7 @@ const Filters = () => {
             </Box>
             <AccordionIcon color="white" />
           </AccordionButton>
-          <AccordionPanel borderWidth={1} borderColor='blue.500'>
+          <AccordionPanel className="black-gradient" >
             <Flex
               flexDirection={["column", "column", "row", "row"]}
               h="fit-content"

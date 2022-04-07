@@ -1,10 +1,21 @@
 body, html {
   height: 100%;
-  background-color: black !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace; 
     font-family: 'Barriecito', cursive;
+}
+
+.blue-gradient {
+  background: radial-gradient(ellipse at 49% 52%, rgba(0, 255, 235, 1) 0%, rgba(7, 58, 187, 1) 100%);
+}
+
+.red-gradient {
+  background: radial-gradient(ellipse at 50% 50%, #D5554D 0%, #640202 100%);
+}
+
+.black-gradient {
+  background: radial-gradient(ellipse at 50% 50%, #E3E3E3 0%, #000000FC 100%);
 }
