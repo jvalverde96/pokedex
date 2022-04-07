@@ -11,7 +11,7 @@ const icons = [
   },
   {
     fgColor: "white",
-    url: "https://www.linkedin.com/in/javier-valverde-solano-48b629186/",
+    url: "https://www.linkedin.com/in/javier-valverde-solano/",
     style: { width: "25px", height: "25px" },
   },
   {
