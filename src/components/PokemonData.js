@@ -21,6 +21,8 @@ import {
   Heading,
   ModalOverlay,
   VStack,
+  Progress,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import grayPokeball from "../images/gray-pokeball-bg.png";
 import whiteArrow from "../images/white-arrow.png";
@@ -39,6 +41,7 @@ const PokemonData = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { pokemons, imageType } = useContext(PokedexContext);
   const { types } = clickedPokemonData || {};
+  // const { stats } = clickedPokemonData || [];
 
   const [evolutionChain, setEvolutionChain] = useState([]);
 
@@ -93,7 +96,7 @@ const PokemonData = ({
       },
       {
         label: "Capture Rate:",
-        value: `${clickedPokemonData?.pokemonCaptureRate}%`
+        value: `${clickedPokemonData?.pokemonCaptureRate}%`,
       },
     ],
     [clickedPokemonId]
@@ -155,14 +158,10 @@ const PokemonData = ({
   }, [isOpen]);
 
   return (
-    <Modal
-      onClose={onClose}
-      isOpen={isOpen}
-      size='4xl'
-      scrollBehavior="inside"
-    >
+    <Modal onClose={onClose} isOpen={isOpen} size="4xl" scrollBehavior="inside">
       <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="6px" />
       <ModalContent
+        color="black"
         pb="15px"
         width={"fit-content"}
         height={["600px", "600px", "750px", "750px"]}
@@ -191,7 +190,11 @@ const PokemonData = ({
             bgGradient={background.bgGradient}
             bg={background.bg}
           >
-            <Heading fontSize="lg" fontFamily="Luckiest Guy">
+            <Heading
+              fontWeight="normal"
+              fontSize="lg"
+              fontFamily="Luckiest Guy"
+            >
               Biography:{" "}
             </Heading>
             <br />
@@ -244,9 +247,39 @@ const PokemonData = ({
               </Table>
             </Flex>
           </Stack>
+          <Box textAlign="center" mt={["35px", "35px", "15px", "15px"]}>
+            <Heading
+              fontWeight="normal"
+              fontSize="md"
+              fontFamily="Luckiest Guy"
+            >
+              Stats:
+            </Heading>
+          </Box>
+          <SimpleGrid
+            p="30px"
+            boxShadow="base"
+            mt="15px"
+            columns={2}
+            spacing={10}
+          >
+            {clickedPokemonData?.stats.map((stat) => (
+              <Box>
+                <Box display="flex" justifyContent="space-between">
+                  <Text fontSize="xs">{stat.stat.name}</Text>
+                  <Text fontSize="xs">{stat.base_stat}</Text>
+                </Box>
+                <Progress hasStripe value={stat.base_stat} />
+              </Box>
+            ))}
+          </SimpleGrid>
           {evolutionChain.length > 1 && (
             <Box p="30px" textAlign="center" boxShadow="base" mt="40px">
-              <Heading fontSize="md" fontFamily="Luckiest Guy">
+              <Heading
+                fontWeight="normal"
+                fontSize="md"
+                fontFamily="Luckiest Guy"
+              >
                 Evolution chain:{" "}
               </Heading>
               <HStack
@@ -262,7 +295,7 @@ const PokemonData = ({
               >
                 {evolutionChain.map((pokemon) => (
                   <VStack
-                  key={pokemon.name}
+                    key={pokemon.name}
                     bgImage={grayPokeball}
                     bgRepeat="no-repeat"
                     bgPosition="center"
@@ -288,7 +321,13 @@ const PokemonData = ({
           )}
         </ModalBody>
         <ModalFooter display={["none", "none", "inline-flex", "inline-flex"]}>
-          <Button bg="black" color="white" mr={3} onClick={onClose} _hover={{backgroundColor: 'blue.500'}}>
+          <Button
+            bg="black"
+            color="white"
+            mr={3}
+            onClick={onClose}
+            _hover={{ backgroundColor: "blue.500" }}
+          >
             Close
           </Button>
         </ModalFooter>

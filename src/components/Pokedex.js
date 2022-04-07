@@ -38,7 +38,7 @@ const Pokedex = () => {
         .find((entry) => entry.language.name === "en").flavor_text;
       const femaleRatio = genderRate !== -1 ? 12.5 * genderRate : 0;
       const maleRatio = genderRate !== -1 ? 12.5 * (8 - genderRate) : 0;
-      const pokemonCaptureRate = Math.round((100 / 225) * captureRate);
+      const pokemonCaptureRate = Math.round((100 / 255) * captureRate);
       const pokemonGeneration = generation.name.replace("generation-", "").toUpperCase();
       const evolutionChain = await axiosClient.get(evolution_chain.url);
       const { id: chainId } = evolutionChain.data;
@@ -96,6 +96,8 @@ const Pokedex = () => {
       getPokemons();
     }
   }, [renderApplication]);
+
+  console.log(pokemons);
 
   return (
     <PokedexContext.Provider value={context}>
