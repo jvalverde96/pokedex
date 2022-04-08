@@ -20,6 +20,7 @@ import axiosClient from "../api/axios-config";
 import { PokedexContext } from "./Pokedex";
 import debounce from "lodash.debounce";
 import "../index.css";
+import { GENERATIONS_API_URL, TYPES_API_URL } from "../constants/constants";
 
 const imageTypes = [
   { name: "Official Artwork", value: "official-artwork" },
@@ -120,11 +121,11 @@ const Filters = () => {
   }, []);
 
   useEffect(async () => {
-    const typesResponse = await axiosClient.get("type");
+    const typesResponse = await axiosClient.get(TYPES_API_URL);
     const pokemonTypes = typesResponse.data.results
       .map((type) => type.name)
       .filter((type) => type !== "unknown" && type !== "shadow");
-    const generationsResponse = await axiosClient.get("generation");
+    const generationsResponse = await axiosClient.get(GENERATIONS_API_URL);
     const pokemonGenerations = generationsResponse.data.results.map((gen) =>
       gen.name.replace("generation-", "").toUpperCase()
     );

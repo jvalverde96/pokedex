@@ -4,7 +4,7 @@ import { Flex, useDisclosure } from "@chakra-ui/react";
 import PokemonData from "./PokemonData";
 import Content from "./Content";
 import Filters from "./Filters";
-import { propKeys } from "../constants/constants";
+import { POKEMONS_API_URL, propKeys } from "../constants/constants";
 import Intro from "./Intro";
 
 export const PokedexContext = createContext();
@@ -21,7 +21,7 @@ const Pokedex = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const getPokemons = useCallback(async () => {
-    const response = await axiosClient.get("pokemon?limit=1118");
+    const response = await axiosClient.get(POKEMONS_API_URL);
 
     const buildPokemonObject = async (pokemon) => {
       const pokemonData = await axiosClient.get(pokemon.url);
