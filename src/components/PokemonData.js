@@ -32,6 +32,7 @@ import customTheme from "../theme/theme";
 import { Icon } from "@chakra-ui/icons";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 import axiosClient from "../api/axios-config";
+import imageNotAvailable from "../images/image-not-available.png";
 
 const PokemonData = ({
   clickedPokemonId,
@@ -41,7 +42,6 @@ const PokemonData = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { pokemons, imageType } = useContext(PokedexContext);
   const { types } = clickedPokemonData || {};
-  // const { stats } = clickedPokemonData || [];
 
   const [evolutionChain, setEvolutionChain] = useState([]);
 
@@ -182,9 +182,6 @@ const PokemonData = ({
         <ModalCloseButton color="black" />
         <ModalBody>
           <Box
-            rounded="md"
-            p="20px"
-            boxShadow="base"
             mt="15px"
             textAlign="center"
             bgGradient={background.bgGradient}
@@ -198,7 +195,9 @@ const PokemonData = ({
               Biography:{" "}
             </Heading>
             <br />
-            <Text fontSize="sm">{clickedPokemonData?.description}</Text>
+            <Box p="30px" rounded="md" boxShadow="base" fontSize="sm">
+              {clickedPokemonData?.description}
+            </Box>
           </Box>
           <Stack
             direction={["column", "column", "row", "row"]}
@@ -220,9 +219,10 @@ const PokemonData = ({
               <Image
                 boxSize={[200, 200, 300, 300]}
                 src={
-                  imageType !== "default"
+                  (imageType !== "front_default" && imageType !== "front_shiny"
                     ? clickedPokemonData?.sprites.other[imageType].front_default
-                    : clickedPokemonData?.sprites.front_default
+                    : clickedPokemonData?.sprites[imageType]) ||
+                  imageNotAvailable
                 }
               />
             </Box>
@@ -247,7 +247,7 @@ const PokemonData = ({
               </Table>
             </Flex>
           </Stack>
-          <Box textAlign="center" mt={["35px", "35px", "15px", "15px"]}>
+          <Box textAlign="center" mt={["25px", "25px", "15px", "15px"]}>
             <Heading
               fontWeight="normal"
               fontSize="md"
@@ -257,6 +257,7 @@ const PokemonData = ({
             </Heading>
           </Box>
           <SimpleGrid
+            rounded="md"
             p="30px"
             boxShadow="base"
             mt="15px"
@@ -274,7 +275,7 @@ const PokemonData = ({
             ))}
           </SimpleGrid>
           {evolutionChain.length > 1 && (
-            <Box p="30px" textAlign="center" boxShadow="base" mt="40px">
+            <Box textAlign="center" mt={["25px", "25px", "40px", "40px"]}>
               <Heading
                 fontWeight="normal"
                 fontSize="md"
@@ -283,10 +284,12 @@ const PokemonData = ({
                 Evolution chain:{" "}
               </Heading>
               <HStack
+                rounded="md"
+                boxShadow="base"
                 divider={
                   <Image
                     src={whiteArrow}
-                    boxSize={["30px", "30px", "50px", "50px"]}
+                    boxSize={["20px", "20px", "50px", "50px"]}
                   />
                 }
                 mt="30px"
@@ -295,6 +298,7 @@ const PokemonData = ({
               >
                 {evolutionChain.map((pokemon) => (
                   <VStack
+                    p={["15px", "15px", "30px", "30px"]}
                     key={pokemon.name}
                     bgImage={grayPokeball}
                     bgRepeat="no-repeat"
@@ -304,11 +308,13 @@ const PokemonData = ({
                     <Image
                       boxSize={["60px", "60px", "140px", "140px"]}
                       src={
-                        imageType !== "default"
+                        (imageType !== "front_default" &&
+                        imageType !== "front_shiny"
                           ? pokemons.find((p) => p.id === pokemon.id).sprites
                               .other[imageType].front_default
-                          : pokemons.find((p) => p.id === pokemon.id).sprites
-                              .front_default
+                          : pokemons.find((p) => p.id === pokemon.id).sprites[
+                              imageType
+                            ]) || imageNotAvailable
                       }
                     />
                     <Text fontSize="xs" fontWeight="normal">
@@ -322,11 +328,13 @@ const PokemonData = ({
         </ModalBody>
         <ModalFooter display={["none", "none", "inline-flex", "inline-flex"]}>
           <Button
-            bg="black"
+            bg="radial-gradient(ellipse at 50% 50%, #D5554D 0%, #640202 100%)"
             color="white"
             mr={3}
             onClick={onClose}
-            _hover={{ backgroundColor: "blue.500" }}
+            _hover={{
+              opacity: "0.6",
+            }}
           >
             Close
           </Button>

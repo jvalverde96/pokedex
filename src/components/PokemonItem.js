@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import customTheme from "../theme/theme";
 import { PokedexContext } from "./Pokedex";
 import PokemonType from "./PokemonType";
+import imageNotAvailable from "../images/image-not-available.png";
 
 const PokemonItem = ({ pokemon, onClick }) => {
   const { id, name, sprites, types } = pokemon;
@@ -15,20 +16,20 @@ const PokemonItem = ({ pokemon, onClick }) => {
       justifyContent="space-between"
       rounded="md"
       cursor="pointer"
-      w={["280px","280px","350px","350px"]}
+      w={["280px", "280px", "350px", "350px"]}
       key={pokemon.name}
       m="auto"
       onClick={onClick}
-      _hover={{transform: 'matrix(1, 0, 0, 1, 0, -5)'}}
+      _hover={{ transform: "matrix(1, 0, 0, 1, 0, -5)" }}
       boxShadow="dark-lg"
     >
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
-        h={["150px", "200px", "250px","250px"]}
+        h={["150px", "200px", "250px", "250px"]}
         rounded="md"
-        roundedBottom='none'
+        roundedBottom="none"
         bgGradient={
           types.length === 2
             ? `linear(to-r, ${
@@ -48,16 +49,16 @@ const PokemonItem = ({ pokemon, onClick }) => {
         }
       >
         <Image
-          boxSize={[150,  150, 200,200]}
+          boxSize={[150, 150, 200, 200]}
           src={
-            imageType !== "default"
+            (imageType !== "front_default" && imageType !== "front_shiny"
               ? sprites.other[imageType].front_default
-              : sprites.front_default
+              : sprites[imageType]) || imageNotAvailable
           }
         />
       </Box>
       <VStack
-        h={["100px", "100px", "120px","120px"]}
+        h={["100px", "100px", "120px", "120px"]}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -67,10 +68,10 @@ const PokemonItem = ({ pokemon, onClick }) => {
         rounded="md"
         borderTopRadius={0}
       >
-        <Text color="black" fontSize={["md","md", "xl", "xl"]}>
+        <Text color="black" fontSize={["md", "md", "xl", "xl"]}>
           #{id}
         </Text>
-        <Text color="black" fontSize={["md","md", "xl", "xl"]}>
+        <Text color="black" fontSize={["md", "md", "xl", "xl"]}>
           {" "}
           {name}
         </Text>

@@ -37,7 +37,7 @@ const Intro = ({ isOpen, onClose }) => (
       </ModalBody>
 
       <ModalFooter>
-        <Button colorScheme="blue" onClick={onClose} fontWeight="normal">
+        <Button colorScheme="blue" onClick={onClose} fontWeight="normal" >
           Got it!
         </Button>
       </ModalFooter>

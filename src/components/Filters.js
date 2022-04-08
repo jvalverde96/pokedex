@@ -25,7 +25,8 @@ const imageTypes = [
   { name: "Official Artwork", value: "official-artwork" },
   { name: "Dream World", value: "dream_world" },
   { name: "Home", value: "home" },
-  { name: "Default", value: "default" },
+  { name: "Default", value: "front_default" },
+  { name: "Shiny", value: "front_shiny" },
 ];
 
 const Filters = () => {

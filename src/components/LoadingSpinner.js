@@ -11,7 +11,7 @@ const LoadingSpinner = () => (
       color="black"
       size="xl"
     />
-    <Text fontWeight="normal" color="black" mt="10px" fontSize="xl">
+    <Text fontWeight="normal" color='black' mt="10px" fontSize="xl">
       Fetching pokemons...
     </Text>
   </Box>

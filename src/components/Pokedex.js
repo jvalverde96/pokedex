@@ -20,7 +20,7 @@ const Pokedex = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const getPokemons = async () => {
+  const getPokemons = useCallback(async () => {
     const response = await axiosClient.get("pokemon?limit=1118");
 
     const buildPokemonObject = async (pokemon) => {
@@ -67,7 +67,7 @@ const Pokedex = () => {
     setPokemons([...allPokemons]);
     setPokemonsAuxiliar([...allPokemons]);
     setLoadingPokemons(false);
-  };
+  }, []);
 
   const handlePokemonSelection = (id) => {
     setclickedPokemonId(id);
@@ -96,8 +96,6 @@ const Pokedex = () => {
       getPokemons();
     }
   }, [renderApplication]);
-
-  console.log(pokemons);
 
   return (
     <PokedexContext.Provider value={context}>
