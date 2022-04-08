@@ -20,7 +20,7 @@ const Pokedex = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const getPokemons = async () => {
+  const getPokemons = useCallback(async () => {
     const response = await axiosClient.get("pokemon?limit=1118");
 
     const buildPokemonObject = async (pokemon) => {
@@ -38,7 +38,7 @@ const Pokedex = () => {
         .find((entry) => entry.language.name === "en").flavor_text;
       const femaleRatio = genderRate !== -1 ? 12.5 * genderRate : 0;
       const maleRatio = genderRate !== -1 ? 12.5 * (8 - genderRate) : 0;
-      const pokemonCaptureRate = Math.round((100 / 225) * captureRate);
+      const pokemonCaptureRate = Math.round((100 / 255) * captureRate);
       const pokemonGeneration = generation.name.replace("generation-", "").toUpperCase();
       const evolutionChain = await axiosClient.get(evolution_chain.url);
       const { id: chainId } = evolutionChain.data;
@@ -67,7 +67,7 @@ const Pokedex = () => {
     setPokemons([...allPokemons]);
     setPokemonsAuxiliar([...allPokemons]);
     setLoadingPokemons(false);
-  };
+  }, []);
 
   const handlePokemonSelection = (id) => {
     setclickedPokemonId(id);

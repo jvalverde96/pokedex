@@ -10,7 +10,7 @@ const NotFound = () => (
     textAlign="center"
   >
     <Image boxSize="50px" src={error} />
-    <Text mt="15px" fontWeight="normal" color="white" fontSize="lg">
+    <Text mt="15px" fontWeight="normal" color="black" fontSize="lg">
       Ooops! No pokemons found with your searching criteria... 😞
     </Text>
   </VStack>

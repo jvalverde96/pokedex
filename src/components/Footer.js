@@ -2,6 +2,7 @@ import { Avatar, Box, Flex, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 import javier from "../images/javier.jpg";
 import { SocialIcon } from "react-social-icons";
+import "../index.css";
 
 const icons = [
   {
@@ -11,7 +12,7 @@ const icons = [
   },
   {
     fgColor: "white",
-    url: "https://www.linkedin.com/in/javier-valverde-solano-48b629186/",
+    url: "https://www.linkedin.com/in/javier-valverde-solano/",
     style: { width: "25px", height: "25px" },
   },
   {
@@ -25,7 +26,6 @@ const Footer = () => (
   <Flex
     w="100%"
     h={["100px", "110px", "130px", "130px"]}
-    bg="black"
     boxShadow="dark-lg"
     justifyContent="space-between"
     position="fixed"
@@ -33,6 +33,8 @@ const Footer = () => (
     right={0}
     borderTop="2px"
     borderColor="white"
+    className="blue-gradient"
+    color='black'
   >
     <Wrap
       m="auto 0 auto 20px"
@@ -48,18 +50,12 @@ const Footer = () => (
     <Box
       textAlign="center"
       m="auto"
-      color="white"
-      fontFamily="Lato"
-      fontWeight="bold"
       fontSize={["xs", "sm", "md", "xl"]}
     >
       Copyright &copy; 2022 | Just for fun
     </Box>
     <Flex
       mr={["20px", "20px", "40px", "40px"]}
-      color="white"
-      fontWeight="bold"
-      fontFamily="Lato"
       fontSize="2xl"
     >
       <Avatar ml="15px" mt="auto" mb="auto" size="md" src={javier} />
@@ -69,7 +65,7 @@ const Footer = () => (
         ml="3"
         display={["none", "none", "block", "block"]}
       >
-        <Text fontWeight="bold" fontSize={["sm", "md", "md", "sm"]}>
+        <Text  fontSize={["sm", "md", "md", "sm"]}>
           Javier Valverde 🇨🇷
         </Text>
         <Text fontSize={["0", "xs", "xs", "xs"]}>Software Engineer</Text>
