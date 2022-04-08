@@ -33,6 +33,7 @@ import { Icon } from "@chakra-ui/icons";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 import axiosClient from "../api/axios-config";
 import imageNotAvailable from "../images/image-not-available.png";
+import { EVOLUTION_CHAIN_API_URL } from "../constants/constants";
 
 const PokemonData = ({
   clickedPokemonId,
@@ -124,9 +125,7 @@ const PokemonData = ({
   );
 
   const buildEvolutionChain = async () => {
-    const response = await axiosClient.get(
-      `evolution-chain/${clickedPokemonData.chainId}`
-    );
+    const response = await axiosClient.get(EVOLUTION_CHAIN_API_URL.replace(":id", `${clickedPokemonData.chainId}`));
     const { chain } = response.data;
 
     const evoChain = [];
