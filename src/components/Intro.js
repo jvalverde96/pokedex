@@ -33,7 +33,7 @@ const Intro = ({ isOpen, onClose }) => (
         Welcome to Javier's Pokedex. This app has been built for fun and here
         you can consult the Pokemons information. You can be sure that you will
         see accurate information because I'm consuming the official pokemon API to
-        fetch the data.
+        show the data.
       </ModalBody>
 
       <ModalFooter>
