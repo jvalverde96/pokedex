@@ -13,7 +13,7 @@ Welcome to my **Pokedex** project! This app lets you explore and search for your
 
 ## 🚀 Setup
 1. Clone the repo:  
-   `git clone https://github.com/yourusername/pokedex.git`
+   `git clone https://github.com/jvalverde96/pokedex.git`
 2. Install dependencies:  
    `npm install`
 3. Start the development server:  
